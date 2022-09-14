@@ -4,7 +4,7 @@
 CREATE DATABASE selke;
 
 # criando a tebela usuarios
-CREATE TABLE students ( 
+CREATE TABLE usuarios ( 
 id INT(6) AUTO_INCREMENT PRIMARY KEY, 
 nome VARCHAR(255) NOT NULL, 
 usuario VARCHAR(255) NOT NULL, 
