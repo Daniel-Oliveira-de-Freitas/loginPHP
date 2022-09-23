@@ -22,7 +22,7 @@ require 'conexao.php';
 <body>
     <?php
     // Exemplo para criptografar a senha_usuario
-     //echo password_hash(123, PASSWORD_DEFAULT);
+     //echo password_hash(123456, PASSWORD_DEFAULT);
     ?>
     <div class="menu">
         <?php include 'menu.php'; ?>
@@ -43,7 +43,7 @@ require 'conexao.php';
                                 WHERE usuario =:usuario  
                                 LIMIT 1";
                 $result_usuario = $conn->prepare($query_usuario);
-                var_dump($dados);
+                //var_dump($dados);
                 $result_usuario->bindParam(':usuario', $dados['usuario']);
                 $result_usuario->execute();
                 

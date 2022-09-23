@@ -19,69 +19,74 @@ require 'conexao.php';
     <div class="menu">
         <?php include 'menu.php'; ?>
     </div>
-    
-    <div class="container mt-5">
 
-        <?php include('message.php'); ?>
+    <?php
+    if (isset($_GET['id'])) {
+        $student_id = mysqli_real_escape_string($con, $_GET['id']);
+        $query = "SELECT * FROM usuarios WHERE id = $student_id";
+        $query_run = mysqli_query($con, $query);
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Student Edit
-                            <a href="index.php" class="btn btn-danger float-end">Voltar</a>
-                        </h4>
-                    </div>
-                    <div class="card-body">
+        if (mysqli_num_rows($query_run) > 0) {
 
-                        <?php
-                        if (isset($_GET['id'])) {
-                            $student_id = mysqli_real_escape_string($con, $_GET['id']);
-                            $query = "SELECT * FROM usuarios WHERE id = $student_id";
-                            $query_run = mysqli_query($con, $query);
+            $student = mysqli_fetch_array($query_run);
+    ?>
 
-                            if (mysqli_num_rows($query_run) > 0) {
+            <div class="container mt-5">
 
-                                $student = mysqli_fetch_array($query_run);
-                        ?>
+                <?php include('message.php'); ?>
 
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between">
+                                
+                                <h4>Editar Usuario</h4>
+                                <h4 name="id"  class="float-end" >Identificação do Usuario: <?= $student['id']; ?></h4>
+                               
+                            </div>
+                            <div class="card-body">
                                 <form action="code.php" method="POST">
 
                                     <div class="mb-3">
-                                        <label>Student Name</label>
-                                        <input type="text" name="name" value="<?= $student['name']; ?>" class="form-control">
+                                        <label>Nome</label>
+                                        <input type="text" name="nome" value="<?= $student['nome']; ?>" class="form-control">
                                     </div>
                                     <div class="mb-3">
-                                        <label>Student Email</label>
-                                        <input type="email" name="email" value="<?= $student['email']; ?>" class="form-control">
+                                        <label>Email</label>
+                                        <input type="email" name="usuario" value="<?= $student['usuario']; ?>" class="form-control">
                                     </div>
                                     <div class="mb-3">
-                                        <label>Student Phone</label>
-                                        <input type="text" name="phone" value="<?= $student['phone']; ?>" class="form-control">
+                                        <label>Senha</label>
+                                        <input type="password" name="senha_usuario" value="<?= $student['senha_usuario']; ?>" class="form-control">
                                     </div>
                                     <div class="mb-3">
-                                        <label>Student Course</label>
-                                        <input type="text" name="course" value="<?= $student['course']; ?>" class="form-control">
+                                        <label>Fone</label>
+                                        <input type="text" name="fone" value="<?= $student['fone']; ?>" class="form-control">
                                     </div>
                                     <div class="mb-3">
-                                        <button type="submit" name='update_student' class="btn btn-primary">Update Student</button>
+                                        <label>Curso</label>
+                                        <input type="text" name="curso" value="<?= $student['curso']; ?>" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <button type="submit" name='update_usuario' class="btn btn-primary float-end">Alterar Usuario</button>
+                                        <a href="index.php" style="margin-right: 15px;" class="btn btn-danger float-end">Voltar</a>
                                     </div>
 
                                 </form>
                         <?php
-                            } else {
-                                echo "<h4>No Such Id Found</h4>";
-                            }
-                        }
+                    } else {
+                        echo "<h4>No Such Id Found</h4>";
+                    }
+                }
                         ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
 
 </html>

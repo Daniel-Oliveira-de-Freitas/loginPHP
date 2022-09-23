@@ -29,9 +29,9 @@ include_once 'conexao.php';
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Student Add
-                            <a href="editar.php" class="btn btn-success float-end">Editar</a>
-                            <a href="index.php" class="btn btn-danger float-end">Voltar</a>
+                        <h4>Adicionar Usuario
+                            
+                            
                         </h4>
                     </div>
                     <div class="card-body">
@@ -57,10 +57,16 @@ include_once 'conexao.php';
                                 <label>Curso</label>
                                 <input type="text" name="curso" class="form-control">
                             </div>
+                            <br>
                             <div class="mb-3">
-                                <button type="submit" name='save_student' class="btn btn-primary">Salvar</button>
+                                <form action="upload.php" method="post" enctype="multipart/form-data">
+                                    Selecione a imagem para upload:
+                                    <input class="btn btn-info" type="file" name="fileToUpload" id="fileToUpload" >
+                                    <input class="btn btn-info" type="submit" value="Upload Image" name="submit">
+                                </form>
+                                <button type="submit" name='save_usuario' class="btn btn-primary float-end">Salvar</button>
+                                <a href="index.php" style="margin-right: 15px;" class="btn btn-danger float-end">Voltar</a>
                             </div>
-
                         </form>
                     </div>
                 </div>

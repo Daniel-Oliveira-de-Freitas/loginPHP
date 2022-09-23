@@ -32,14 +32,67 @@ include_once 'conexao.php';
 <?php include('message.php'); ?>
 <h1 style="text-align: center;">Bem Vindo ao Site!!!</h1>
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<div>
-        <form action="upload.php" method="post" enctype="multipart/form-data">
-            Select image to upload:
-            <input type="file" name="fileToUpload" id="fileToUpload">
-            <input type="submit" value="Upload Image" name="submit">
-        </form>
+<br>
+<div class="container mt-5">
+
+    <?php include('message.php'); ?>
+    
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4> Detalhes do estudante
+              <!-- <a href="student-create.php" class="btn btn-primary float-end">Add Student</a> -->
+            </h4>
+          </div>
+          <div class="card-body">
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nome</th>
+                  <th>Email</th>
+                  <th>Telefone</th>
+                  <th>Curso</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                $query = "SELECT * FROM usuarios";
+                $query_run = mysqli_query($con, $query);
+                
+                if (mysqli_num_rows($query_run) > 0) {
+                  foreach ($query_run as $usuario) {
+                ?>
+                    <tr>
+                      <td><?= $usuario['id'] ?></td>
+                      <td><?= $usuario['nome'] ?></td>
+                      <td><?= $usuario['usuario'] ?></td>
+                      <td><?= $usuario['fone'] ?></td>
+                      <td><?= $usuario['curso'] ?></td>
+                      <td>
+                        <a href="student-view.php?id=<?= $usuario['id']; ?>" class="btn btn-info btn-sm">Visualizar</a>
+                        <a href="editar.php?id=<?= $usuario['id']; ?>" class="btn btn-warning btn-sm">Editar</a>
+                        <form action="code.php" method="POST" class="d-inline">
+                        <button type="submit" name="delete_student" value="<?= $usuario['id']; ?>" class="btn btn-danger btn-sm">Deletar</button>
+                        </form>
+                      </td>
+                    </tr>
+                <?php
+                  }
+                } else {
+                  echo "<h5> No Record Found </h5>";
+                }
+                ?>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
     <br>
         <div class="menu">
