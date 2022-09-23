@@ -39,4 +39,26 @@ if(isset($_POST['save_usuario'])){
     }
 }
 
+if(isset($_POST['delete_usuario'])){
+    $student_id = mysqli_real_escape_string($con, $_POST['delete_student']);
+
+    $query = "DELETE FROM usuarios WHERE id='$student_id'";
+    $query_run = mysqli_query($con, $query);
+    
+    if($query_run){
+
+        $_SESSION['message'] = "Usuario Deletado com Sucesso!!";
+        header("Location: index.php");
+        exit(0);
+
+    }else{
+
+        $_SESSION['message'] = "Usuario Não Deletado!!";
+        header("Location: index.php");
+        exit(0);
+
+    }
+
+}
+
 ?>

@@ -41,7 +41,7 @@ require 'conexao.php';
                             <div class="card-header d-flex justify-content-between">
                                 
                                 <h4>Editar Usuario</h4>
-                                <h4 name="id"  class="float-end" >Identificação do Usuario: <?= $student['id']; ?></h4>
+                                <h4 name="id" class="float-end" >Identificação do Usuario: <?= $student['id']; ?></h4>
                                
                             </div>
                             <div class="card-body">

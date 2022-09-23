@@ -72,10 +72,10 @@ include_once 'conexao.php';
                       <td><?= $usuario['fone'] ?></td>
                       <td><?= $usuario['curso'] ?></td>
                       <td>
-                        <a href="student-view.php?id=<?= $usuario['id']; ?>" class="btn btn-info btn-sm">Visualizar</a>
+                        <a href="visualizar.php?id=<?= $usuario['id']; ?>" class="btn btn-info btn-sm">Visualizar</a>
                         <a href="editar.php?id=<?= $usuario['id']; ?>" class="btn btn-warning btn-sm">Editar</a>
                         <form action="code.php" method="POST" class="d-inline">
-                        <button type="submit" name="delete_student" value="<?= $usuario['id']; ?>" class="btn btn-danger btn-sm">Deletar</button>
+                        <button type="submit" name="delete_usuario" value="<?= $usuario['id']; ?>" class="btn btn-danger btn-sm">Deletar</button>
                         </form>
                       </td>
                     </tr>
